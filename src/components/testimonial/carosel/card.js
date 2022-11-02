@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import david from '../../../asset/img/image/img_david.png';
 import $ from 'jquery';
 // import 'https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js';
