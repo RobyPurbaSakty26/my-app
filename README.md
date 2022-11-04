@@ -26,7 +26,7 @@ This is challenge project chaper 7. Make website with React Js
 
 ## Api
 
-Sorce APi
+Sorce API
 [https://raw.githubusercontent.com/fnurhidayat probable-garbanzo/main/data/cars.min.json](https://raw.githubusercontent.com/fnurhidayatprobable-garbanzo/main/data/cars.min.json)
 
 ## Available Scripts
