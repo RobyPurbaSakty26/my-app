@@ -1,6 +1,33 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Running project
+
+### Install depedencies
+
+`npm install`
+
+### run
+
+`npm start`
+
+## about Project
+
+This is challenge project chaper 7. Make website with React Js
+
+## Tools
+
+- React js
+- React router dom
+- Boostrap 5.2
+
+## Fiture
+
+- searce car by date and count
+
+## Api
+
+Sorce APi
+[https://raw.githubusercontent.com/fnurhidayat probable-garbanzo/main/data/cars.min.json](https://raw.githubusercontent.com/fnurhidayatprobable-garbanzo/main/data/cars.min.json)
 
 ## Available Scripts
 
