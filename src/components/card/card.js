@@ -6,12 +6,29 @@ import imgCalendar from '../../asset/img/icon/fi_calendar.png';
 
 function CardMobil() {
   const [cars, setCar] = useState([]);
+  const [jumlah, setJumlah] = useState('');
+  const [date, setDate] = useState('');
+  const [time, setTime] = useState('');
+  const [dispalCar, setDisplayCar] = useState([]);
+
+  const handleSearch = () => {
+    console.log(jumlah, date, time);
+    const newDate = new Date(`${date} ${time}`);
+    console.log(newDate);
+    // mendapatkan epoch
+
+    const filterCars = cars.filter((items) => {
+      const dateCar = new Date(items.availableAt);
+      return items.capacity >= jumlah && dateCar >= newDate;
+    });
+    console.log('filterCars', filterCars);
+    setDisplayCar(filterCars);
+  };
 
   useEffect(() => {
     fetch(' https://raw.githubusercontent.com/fnurhidayat/probable-garbanzo/main/data/cars.min.json')
       .then((response) => response.json())
       .then((data) => {
-        console.log('data  ', data);
         setCar(data);
       })
       .catch((err) => {
@@ -20,14 +37,60 @@ function CardMobil() {
   });
   return (
     <>
-      {/* {cars.map((items) => (
-        <h1 key={items.id}> {items.model}</h1>
-      ))} */}
+      {/* from */}
+      <div>
+        <div className="container bg-blue fm-cr">
+          <div className="row">
+            <div className="col-sm">
+              <label htmlFor="exampleFormControlInput1" className="form-label">
+                Tipe Driver
+              </label>
+              <select className="form-select" aria-label="Default select example">
+                <option value="Dengan Sopir">Dengan Sopir</option>
+                <option value="Tanpa Sopir">Tanpa Sopir (Lepas Kunci)</option>
+              </select>
+            </div>
+
+            <div className="col-sm">
+              <label htmlFor="exampleFormControlInput1" className="form-label">
+                Tanggal
+              </label>
+              <input type="date" className="form-control" id="date" onChange={(e) => setDate(e.target.value)} />
+            </div>
+
+            <div className="col-sm">
+              <label htmlFor="exampleFormControlInput1" className="form-label">
+                Waktu jemput/ambil
+              </label>
+              <input type="time" className="form-control" id="time" onChange={(e) => setTime(e.target.value)} />
+            </div>
+
+            <div className="col-sm">
+              <label htmlFor="exampleFormControlInput1" className="form-label">
+                Jumlah
+              </label>
+              <div className="input-group mb-3">
+                <input type="number" className="form-control" id="jumlah" placeholder="1" aria-label="Recipient's username" aria-describedby="basic-addon2" onChange={(e) => setJumlah(e.target.value)} />
+                <span className="input-group-text bg-white" id="jumlah">
+                  <img src="./asset/img/icon/fi_users.png" alt="" />
+                </span>
+              </div>
+            </div>
+            <div className="col-sm-2" style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'flex-center', paddingBottom: '20px' }}>
+              <button type="button" id="btn-cari" className="btn btn-success px-4" onClick={handleSearch}>
+                Cari mobil
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* form akhir */}
+
       <section id="lis-mobil">
         <div className="container layout-section">
           <div id="cars-container" className="row ">
             {/* cars */}
-            {cars.map((items) => (
+            {dispalCar.map((items) => (
               <div className="col-lg-4 my-3" key={items.id}>
                 <div className="card">
                   <div className="car-list">

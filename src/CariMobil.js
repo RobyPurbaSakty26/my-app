@@ -15,7 +15,7 @@ function CariMobil() {
     <div>
       <Navbar></Navbar>
       <HomeCar />
-      <Cari></Cari>
+      {/* <Cari></Cari> */}
       <CardMobil />
       <Footer />
     </div>
