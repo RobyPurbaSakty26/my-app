@@ -17,8 +17,8 @@ function CardMobil() {
     const filterCars = cars.filter((items) => {
       const dateCar = new Date(items.availableAt);
       let filterJumlah = jumlah;
-      if (jumlah == undefined) filterJumlah = 0;
-      if (newDate == 'Invalid Date') newDate = new Date();
+      if (jumlah === undefined) filterJumlah = 0;
+      if (newDate === 'Invalid Date') newDate = new Date();
 
       return items.capacity >= filterJumlah && dateCar >= newDate;
     });

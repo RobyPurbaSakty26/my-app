@@ -22,11 +22,11 @@ This is challenge project chaper 7. Make website with React Js
 
 ## Fiture
 
-- searce car by date and count
+- search car by date and count
 
 ## Api
 
-Sorce API
+Source API
 [https://raw.githubusercontent.com/fnurhidayat probable-garbanzo/main/data/cars.min.json](https://raw.githubusercontent.com/fnurhidayatprobable-garbanzo/main/data/cars.min.json)
 
 ## Available Scripts
