@@ -12,13 +12,15 @@ function CardMobil() {
   const [dispalCar, setDisplayCar] = useState([]);
 
   const handleSearch = () => {
-    console.log(jumlah, date, time);
-    const newDate = new Date(`${date} ${time}`);
-    console.log(newDate);
+    let newDate = new Date(`${date} ${time}`);
 
     const filterCars = cars.filter((items) => {
       const dateCar = new Date(items.availableAt);
-      return items.capacity >= jumlah && dateCar >= newDate;
+      let filterJumlah = jumlah;
+      if (jumlah == undefined) filterJumlah = 0;
+      if (newDate == 'Invalid Date') newDate = new Date();
+
+      return items.capacity >= filterJumlah && dateCar >= newDate;
     });
     console.log('filterCars', filterCars);
     setDisplayCar(filterCars);
@@ -89,44 +91,48 @@ function CardMobil() {
         <div className="container layout-section">
           <div id="cars-container" className="row ">
             {/* cars */}
-            {dispalCar.map((items) => (
-              <div className="col-lg-4 my-3" key={items.id}>
-                <div className="card">
-                  <div className="car-list">
-                    <img id="imgCar" src={items.image} className="card-img-top" alt="..." />
-                    <div className="card-body">
-                      <h5 className="card-title">{items.model}</h5>
-                      <b>Rp {items.rentPerDay} /Hari</b>
-                      <p className="card-text" style={{ minHeight: '100px' }}>
-                        {items.description}
-                      </p>
+            {dispalCar.length > 0 ? (
+              dispalCar.map((items) => (
+                <div className="col-lg-4 my-3" key={items.id}>
+                  <div className="card">
+                    <div className="car-list">
+                      <img id="imgCar" src={items.image} className="card-img-top" alt="..." />
+                      <div className="card-body">
+                        <h5 className="card-title">{items.model}</h5>
+                        <b>Rp {items.rentPerDay} /Hari</b>
+                        <p className="card-text" style={{ minHeight: '100px' }}>
+                          {items.description}
+                        </p>
 
-                      <div className="row pb-2">
-                        <div className="col-1">
-                          <img src={imgUser} alt="" />
+                        <div className="row pb-2">
+                          <div className="col-1">
+                            <img src={imgUser} alt="" />
+                          </div>
+                          <div className="col">{items.capacity} Orang</div>
                         </div>
-                        <div className="col">{items.capacity} Orang</div>
-                      </div>
-                      <div className="row pb-2">
-                        <div className="col-1">
-                          <img src={imgSetting} alt="" />
+                        <div className="row pb-2">
+                          <div className="col-1">
+                            <img src={imgSetting} alt="" />
+                          </div>
+                          <div className="col"> {items.transmission} </div>
                         </div>
-                        <div className="col"> {items.transmission} </div>
-                      </div>
-                      <div className="row pb-4">
-                        <div className="col-1">
-                          <img src={imgCalendar} alt="" />
+                        <div className="row pb-4">
+                          <div className="col-1">
+                            <img src={imgCalendar} alt="" />
+                          </div>
+                          <div className="col"> {items.availableAt} </div>
                         </div>
-                        <div className="col"> {items.availableAt} </div>
+                        <a href="/" className="btn btn-success py-2" style={{ width: '100%' }}>
+                          Pilih Mobil
+                        </a>
                       </div>
-                      <a href="/" className="btn btn-success py-2" style={{ width: '100%' }}>
-                        Pilih Mobil
-                      </a>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))
+            ) : (
+              <h1 className="text-center"> Data Tidak Ditemukan</h1>
+            )}
             {/* akhir cars */}
           </div>
         </div>
