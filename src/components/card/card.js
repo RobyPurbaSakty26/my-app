@@ -15,7 +15,6 @@ function CardMobil() {
     console.log(jumlah, date, time);
     const newDate = new Date(`${date} ${time}`);
     console.log(newDate);
-    // mendapatkan epoch
 
     const filterCars = cars.filter((items) => {
       const dateCar = new Date(items.availableAt);
