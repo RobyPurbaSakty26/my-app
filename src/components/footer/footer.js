@@ -1,9 +1,9 @@
-import React from 'react';
-import iconFacebook from '../../asset/img/icon/icon_facebook.png';
-import iconInstagram from '../../asset/img/icon/icon_instagram.png';
-import inconTwiter from '../../asset/img/icon/icon_twitter.png';
-import mail from '../../asset/img/icon/icon_mail.png';
-import iconTwich from '../../asset/img/icon/icon_twitch.png';
+import React from "react";
+import iconFacebook from "../../asset/img/icon/icon_facebook.png";
+import iconInstagram from "../../asset/img/icon/icon_instagram.png";
+import inconTwiter from "../../asset/img/icon/icon_twitter.png";
+import mail from "../../asset/img/icon/icon_mail.png";
+import iconTwich from "../../asset/img/icon/icon_twitch.png";
 
 function Footer() {
   return (
@@ -41,35 +41,57 @@ function Footer() {
             <p>Connect with us</p>
             <ul className="list-group list-group-horizontal">
               <li className="list-group-item incon-footer">
-                <a href="#">
-                  <img className="footer-incon-size" src={iconFacebook} alt="..." />
+                <a href="/">
+                  <img
+                    className="footer-incon-size"
+                    src={iconFacebook}
+                    alt="..."
+                  />
                 </a>
               </li>
               <li className="list-group-item incon-footer">
-                <a className="text-white" href="#">
-                  <img className="footer-incon-size" src={iconInstagram} alt="..." />
+                <a className="text-white" href="/">
+                  <img
+                    className="footer-incon-size"
+                    src={iconInstagram}
+                    alt="..."
+                  />
                 </a>
               </li>
               <li className="list-group-item incon-footer">
-                <a className="text-white" href="#">
-                  <img className="footer-incon-size" src={inconTwiter} alt="..." />
+                <a className="text-white" href="/">
+                  <img
+                    className="footer-incon-size"
+                    src={inconTwiter}
+                    alt="..."
+                  />
                 </a>
               </li>
               <li className="list-group-item incon-footer">
-                <a className="text-white" href="#">
+                <a className="text-white" href="/">
                   <img className="footer-incon-size" src={mail} alt="..." />
                 </a>
               </li>
               <li className="list-group-item incon-footer">
-                <a className="text-white" href="#">
-                  <img className="footer-incon-size" src={iconTwich} alt="..." />
+                <a className="text-white" href="/">
+                  <img
+                    className="footer-incon-size"
+                    src={iconTwich}
+                    alt="..."
+                  />
                 </a>
               </li>
             </ul>
           </div>
           <div className="col-lg-3 col-sm-6">
             <p>Copyright Binar 2022</p>
-            <div style={{ width: '100px', height: '34px', backgroundColor: '#0d28a6' }}></div>
+            <div
+              style={{
+                width: "100px",
+                height: "34px",
+                backgroundColor: "#0d28a6",
+              }}
+            ></div>
           </div>
         </div>
       </div>

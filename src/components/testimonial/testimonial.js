@@ -1,7 +1,6 @@
-import React from 'react';
-import david from '../../asset/img/image/img_david.png';
-import '../../own.js';
-import Card from './carosel/card';
+import React from "react";
+import "../../own.js";
+import Card from "./carosel/card";
 function Testimonial() {
   return (
     <section id="testimonial">
