@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { useState } from "react";
 import imgUser from "../../asset/img/icon/fi_users.png";
 import imgSetting from "../../asset/img/icon/fi_settings.png";
@@ -11,8 +11,10 @@ function CardMobil() {
   const [time, setTime] = useState("");
   const [dispalCar, setDisplayCar] = useState([]);
   const [isSeacrh, setIsSearch] = useState(false);
+  const dataFec = useRef(false);
 
   const handleSearch = () => {
+    dataFec.current = false;
     let newDate = new Date(`${date} ${time}`);
     setIsSearch(true);
 
@@ -24,27 +26,58 @@ function CardMobil() {
 
       return items.capacity >= filterJumlah && dateCar >= newDate;
     });
-    console.log("filterCars", filterCars);
+    // console.log("filterCars", cars);
     setDisplayCar(filterCars);
   };
 
   useEffect(() => {
-    fetch(
-      " https://raw.githubusercontent.com/fnurhidayat/probable-garbanzo/main/data/cars.min.json"
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        setCar(data);
+    if (dataFec.current) {
+      return;
+    }
+
+    const data = async () => {
+      try {
+        const resultawait = await fetch(
+          " https://raw.githubusercontent.com/fnurhidayat/probable-garbanzo/main/data/cars.min.json"
+        );
+
+        const result = await resultawait.json();
+        // console.log("data dari await data ", result);
+
+        setCar(result);
+
         if (!isSeacrh) {
           setDisplayCar(cars);
-        } else {
-          console.log("salah");
         }
-      })
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
 
-      .catch((err) => {
-        console.log("err ", err);
-      });
+    // fetch(
+    //   " https://raw.githubusercontent.com/fnurhidayat/probable-garbanzo/main/data/cars.min.json"
+    // )
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //     setCar(data);
+    //     if (!isSeacrh) {
+    //       setDisplayCar(cars);
+    //     } else {
+    //       // console.log("salah");
+    //     }
+    //   })
+
+    //   .catch((err) => {
+    //     console.log("err ", err);
+    //   });
+    console.log("data fecing");
+    console.log("data cars : ", cars);
+    console.log("data display : ", dispalCar);
+    if (dispalCar.length > 0) {
+      dataFec.current = true;
+    }
+
+    data();
   });
 
   return (
@@ -136,6 +169,7 @@ function CardMobil() {
         <div className="container layout-section">
           <div id="cars-container" className="row ">
             {/* cars */}
+
             {dispalCar.length > 0 ? (
               dispalCar.map((items) => (
                 <div className="col-lg-4 my-3" key={items.id}>
@@ -187,6 +221,7 @@ function CardMobil() {
             ) : (
               <h1 className="text-center"> Data Tidak Ditemukan</h1>
             )}
+
             {/* akhir cars */}
           </div>
         </div>
