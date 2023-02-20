@@ -26,7 +26,7 @@ function CardMobil() {
 
       return items.capacity >= filterJumlah && dateCar >= newDate;
     });
-    // console.log("filterCars", cars);
+
     setDisplayCar(filterCars);
   };
 
@@ -40,19 +40,18 @@ function CardMobil() {
         const resultawait = await fetch(
           " https://raw.githubusercontent.com/fnurhidayat/probable-garbanzo/main/data/cars.min.json"
         );
-
         const result = await resultawait.json();
-        // console.log("data dari await data ", result);
 
-        setCar(result);
-
+        setCar(() => result);
         if (!isSeacrh) {
-          setDisplayCar(cars);
+          setDisplayCar(() => cars);
         }
       } catch (error) {
-        console.log(error.message);
+        console.log(error);
       }
     };
+
+    data();
 
     // fetch(
     //   " https://raw.githubusercontent.com/fnurhidayat/probable-garbanzo/main/data/cars.min.json"
@@ -70,14 +69,13 @@ function CardMobil() {
     //   .catch((err) => {
     //     console.log("err ", err);
     //   });
-    console.log("data fecing");
-    console.log("data cars : ", cars);
-    console.log("data display : ", dispalCar);
+
+    // console.log("data fecing");
+    // console.log("data cars : ", cars);
+    // console.log("data display : ", dispalCar);
     if (dispalCar.length > 0) {
       dataFec.current = true;
     }
-
-    data();
   });
 
   return (
@@ -86,7 +84,7 @@ function CardMobil() {
       <div>
         <div className="container bg-blue fm-cr">
           <div className="row">
-            <div className="col-sm">
+            <div className="col-md">
               <label htmlFor="exampleFormControlInput1" className="form-label">
                 Tipe Driver
               </label>
@@ -99,7 +97,7 @@ function CardMobil() {
               </select>
             </div>
 
-            <div className="col-sm">
+            <div className="col-md">
               <label htmlFor="exampleFormControlInput1" className="form-label">
                 Tanggal
               </label>
@@ -111,7 +109,7 @@ function CardMobil() {
               />
             </div>
 
-            <div className="col-sm">
+            <div className="col-md">
               <label htmlFor="exampleFormControlInput1" className="form-label">
                 Waktu jemput/ambil
               </label>
@@ -123,7 +121,7 @@ function CardMobil() {
               />
             </div>
 
-            <div className="col-sm">
+            <div className="col-md">
               <label htmlFor="exampleFormControlInput1" className="form-label">
                 Jumlah
               </label>
@@ -143,7 +141,7 @@ function CardMobil() {
               </div>
             </div>
             <div
-              className="col-sm-2"
+              className="col"
               style={{
                 display: "flex",
                 alignItems: "flex-end",

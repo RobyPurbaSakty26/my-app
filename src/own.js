@@ -1,12 +1,9 @@
-import $ from 'jquery';
+import $ from "jquery";
 
 /* default code of the file */
 
-console.log('masuk', $('.owl-carousel').length);
-if ($('.owl-carousel').length) {
-  console.log('masuk', $('.owl-carousel').length);
-
-  $('.owl-carousel').owlCarousel({
+if ($(".owl-carousel").length) {
+  $(".owl-carousel").owlCarousel({
     stagePadding: 10,
     dots: false,
     loop: true,
